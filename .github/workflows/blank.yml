@@ -1,0 +1,31 @@
+name: WorkFlow Jobs and Steps
+
+on:
+ workflow_dispatch:
+
+jobs:
+  job-1:
+    runs-on: ubuntu-24.04
+    steps:
+      - run: echo "Hello Buudy "
+      - run: echo "This is from  job 1 . "
+  
+  job-2:
+    runs-on: ubuntu-24.04
+    steps:
+      - run: echo " Hello Dev Sir "
+      - run: echo "I am from Job 2 ."
+  job-3:
+    runs-on:  ubuntu-24.04
+    steps:
+      - run: "Dear Sir , I am Job-3 I am depend on job-1 and job-2 ." 
+    needs: 
+      - job-1
+      - job-2
+  job-4:
+    runs-on: ubuntu-24.04
+    steps:
+      - run: "Finally this is job is finished because i am Depends on job-2 and job-3 ."
+    needs: 
+      - job-2
+      - job-3
