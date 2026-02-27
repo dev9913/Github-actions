@@ -1,0 +1,24 @@
+name: Step types
+
+on:
+  workflow_dispatch:
+
+jobs:
+  say-dev-inline:
+    runs-on: ubuntu-24.04
+    steps:
+       - run: echo "Hello Dev 11 , I am from inline stage "
+       
+  say-dev-inline-bash:
+    runs-on: ubuntu-24.04
+    steps:
+      - run: print("Hello Dev 22 , I am from bash satge ");
+        shell: python
+          
+  say-dev-actions:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/hello-world-javascript-action@081a6d193d1dcb38460df1e6927486d748730f9d
+        with:
+          who-git-greet: "Hello Dev 33 , I am From actions stage"
+   
