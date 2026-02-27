@@ -1,0 +1,24 @@
+name: Runners Types
+on:
+  workflow_dispatch:
+
+jobs:
+   #  GITHUB HOSTED RUNNERS
+  github-hosted-ubuntu-vm:
+    name: Ubuntu 24.04 VM
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Show runner info
+        run: |
+          echo "Hello from ${{ runner.os }}-${{ runner.arch }}"
+          echo "Runner name (type): ${{ runner.name }}"
+
+  #  SELF HOSTED RUNNERS       
+  self-hosted-runners:
+    runs-on: [self-hosted, linux]
+    steps:
+      - name: Print message
+        run: echo "Running on my own server "
+
+  #  3RD PARTY HOSTED RUNNERS
+  
