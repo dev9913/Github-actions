@@ -1,0 +1,32 @@
+name: Passing Variables Between jobs
+on:
+  workflow_dispatch:
+
+jobs:
+  #job-1 
+  sender:
+    runs-on: ubuntu-24.04
+    outputs:
+      message: ${{ steps.generate-message.outputs.sms }}
+    steps:
+      - name: Generate and Export message
+        id: generate-message
+        run: |
+          name=Dev
+          echo "sms=Love You ${name}." >> "$GITHUB_OUTPUT"
+          echo "SMS=Love You ${name}!" >> "$GITHUB_ENV"
+          
+      - name: Inspect values inside sender
+        run: |
+          echo "MESSAGE from output (via expression): ${{ steps.generate-message.outputs.sms }}"
+          echo "MESSAGE from env: $SMS"
+          
+  reciever:
+    runs-on: ubuntu-24.04
+    needs: sender
+    steps:
+      - run: |
+          echo "Value from sender:        ${{ needs.sender.outputs.message }}"
+    
+          
+      
