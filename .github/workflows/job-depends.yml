@@ -18,7 +18,7 @@ jobs:
   job-3:
     runs-on:  ubuntu-24.04
     steps:
-      - run: "Dear Sir , I am Job-3 I am depend on job-1 and job-2 ." 
+      - run: "I am Job-3 I am depend on job-1 and job-2 ." 
     needs: 
       - job-1
       - job-2
