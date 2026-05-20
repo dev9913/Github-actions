@@ -6,6 +6,6 @@ jobs:
     steps:
       - name: Genrate Version
         id: version-step
-        run: echo "version=1.2.3" >> $GITHUB_OUTPUTS
+        run: echo "version=1.2.3" >> $GITHUB_OUTPUT
       - name: Use Outputs
         run: echo "versin is ${{ steps.version-step.outputs.version }}" 
