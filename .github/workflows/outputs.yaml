@@ -1,0 +1,11 @@
+name: Output Demo
+on: workflow_dispatch
+jobs:
+  step-output:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Genrate Version
+        id: version-step
+        run: echo "version=1.2.3" >> $GITHUB_OUTPUTS
+      - name: Use Outputs
+        run: echo "versin is ${{ steps.version-step.outputs.version }}" 
