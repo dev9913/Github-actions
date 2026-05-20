@@ -1,0 +1,13 @@
+name: Artifacts Demo 
+on: workflow_dispatch
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create a Rough Artifacts file 
+        run: echo "Hello DEv this is a demo file for artifacts !! " > artifacts.txt
+      - name: Upload artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: artifacts-demo
+          path: artifacts.txt
