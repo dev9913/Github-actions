@@ -11,3 +11,12 @@ jobs:
         with:
           name: artifacts-demo
           path: artifacts.txt
+  download:
+    needs: upload
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v8
+        with:
+          name:  artifacts-demo
+          path: artifacts.txt
